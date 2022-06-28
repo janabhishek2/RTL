@@ -20,7 +20,7 @@ export function removeCamelCaseWithSpaces(color) {
 }
 
 function App() {
-  const [color, setColor] = useState("red");
+  const [color, setColor] = useState("MediumVioletRed");
   const [checked, setChecked] = useState(false);
   const handleCheckChange = () => {
     setChecked((prev) => {
@@ -43,13 +43,13 @@ function App() {
         disabled={checked}
         onClick={() => {
           setColor((prev) => {
-            if (prev == "red") {
-              return "blue";
-            } else return "red";
+            if (prev == "MediumVioletRed") {
+              return "MidnightBlue";
+            } else return "MediumVioletRed";
           });
         }}
       >
-        Change color to {color === "red" ? "blue" : "red"}
+        Change color to {color === "MediumVioletRed" ? removeCamelCaseWithSpaces("MidnightBlue") : removeCamelCaseWithSpaces("MediumVioletRed")}
       </button>
       <br />
       <div style={{ margin: "20px" }}>
