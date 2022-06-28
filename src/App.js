@@ -2,6 +2,13 @@ import "./App.css";
 import React, { useState } from "react";
 function App() {
   const [color, setColor] = useState("red");
+  const [checked, setChecked] = useState(false);
+
+  const handleCheckChange = () => {
+    setChecked((prev) => {
+      return !prev;
+    });
+  };
 
   return (
     <>
@@ -13,8 +20,9 @@ function App() {
           color: "white",
           borderRadius: "15px",
           width: "50%",
-          margin: "auto",
+          margin: "20px",
         }}
+        disabled={checked}
         onClick={() => {
           setColor((prev) => {
             if (prev == "red") {
@@ -25,6 +33,17 @@ function App() {
       >
         Change color to {color === "red" ? "blue" : "red"}
       </button>
+      <br />
+      <div style={{ margin: "20px" }}>
+        <label htmlFor="check">Display : </label>
+        <input
+          name="check"
+          type="checkbox"
+          checked={checked}
+		  aria-checked={checked}
+          onChange={handleCheckChange}
+        />
+      </div>
     </>
   );
 }
