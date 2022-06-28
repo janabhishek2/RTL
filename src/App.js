@@ -1,9 +1,27 @@
 import "./App.css";
 import React, { useState } from "react";
+
+export function removeCamelCaseWithSpaces(color) {
+  if (color.length > 0) {
+	let ans="";
+    for (let i = 0; i < color.length; i++) {
+      ans += color[i];
+      if (
+        color[i + 1] >= "A" &&
+        color[i + 1] <= "Z" &&
+        i + 1 <= color.length - 1
+      ) {
+        ans += " ";
+      }
+    }
+
+    return ans;
+  }
+}
+
 function App() {
   const [color, setColor] = useState("red");
   const [checked, setChecked] = useState(false);
-
   const handleCheckChange = () => {
     setChecked((prev) => {
       return !prev;
@@ -14,7 +32,7 @@ function App() {
     <>
       <button
         style={{
-          backgroundColor: color,
+          backgroundColor: (!checked && color) || (checked && "gray"),
           padding: "20px",
           fontSize: "20px",
           color: "white",
@@ -35,14 +53,14 @@ function App() {
       </button>
       <br />
       <div style={{ margin: "20px" }}>
-        <label htmlFor="check">Display : </label>
         <input
-          name="check"
+          id="disable-button-checkbox"
           type="checkbox"
           checked={checked}
-		  aria-checked={checked}
+          aria-checked={checked}
           onChange={handleCheckChange}
         />
+        <label htmlFor="disable-button-checkbox">Disable Button </label>
       </div>
     </>
   );
