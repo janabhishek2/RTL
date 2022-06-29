@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 export function removeCamelCaseWithSpaces(color) {
   if (color.length > 0) {
-	let ans="";
+    let ans = "";
     for (let i = 0; i < color.length; i++) {
       ans += color[i];
       if (
@@ -49,7 +49,10 @@ function App() {
           });
         }}
       >
-        Change color to {color === "MediumVioletRed" ? removeCamelCaseWithSpaces("MidnightBlue") : removeCamelCaseWithSpaces("MediumVioletRed")}
+        Change color to{" "}
+        {color === "MediumVioletRed"
+          ? removeCamelCaseWithSpaces("MidnightBlue")
+          : removeCamelCaseWithSpaces("MediumVioletRed")}
       </button>
       <br />
       <div style={{ margin: "20px" }}>
